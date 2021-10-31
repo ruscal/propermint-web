@@ -1,0 +1,14 @@
+{
+  "PropermintCdkStack": {
+    "Site": "https://m.propermint.life",
+    "UserPoolClientId": "37cs2rrf0vjif7c5lclfk628s2",
+    "AppSyncAPIKey": "da2-zfjkzqounna5bidojue4zlf54a",
+    "UserPoolId": "us-east-1_HYyB8iB7X",
+    "GraphQLAPIURL": "https://vp772rbkg5c7lgbpnigljn2w74.appsync-api.us-east-1.amazonaws.com/graphql",
+    "ProjectRegion": "us-east-1",
+    "DistributionId": "E2EY2AHCAKF6YT",
+    "IdentityPoolId": "us-east-1:ed8d9e2f-240e-4106-9386-b94a9f23ff9c",
+    "ImageRepositoryBucket": "propermintcdkstack-imagerepository5c425389-1qvggomc29pru",
+    "Certificate": "arn:aws:acm:us-east-1:259438430521:certificate/36e93823-b975-4d45-a982-29808ea7e870"
+  }
+}

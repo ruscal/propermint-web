@@ -1,0 +1,17 @@
+{
+  "name": "gdf9fjc-gq2hzwb",
+  "hash": "tNfSugyrlJjso1rYTMX4IR9NEPXe2JIRbeyc3zWD3uk=",
+  "description": "Next.js Regeneration Lambda",
+  "memory": 512,
+  "timeout": 10,
+  "code": "/Users/russellhoskings/workspace/propermint/propermint/.serverless_nextjs/regeneration-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs14.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::259438430521:role/gdf9fjc-zgf5gu"
+  },
+  "arn": "arn:aws:lambda:us-east-1:259438430521:function:gdf9fjc-gq2hzwb",
+  "region": "us-east-1"
+}

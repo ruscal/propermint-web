@@ -1,0 +1,13 @@
+{
+  "region": "us-east-1",
+  "privateZone": false,
+  "domain": "propermint.life",
+  "subdomains": [
+    {
+      "domain": "www.propermint.life",
+      "distributionId": "E2EKQ504HL3E23",
+      "url": "https://d1lbuuplm6k44r.cloudfront.net",
+      "type": "awsCloudFront"
+    }
+  ]
+}

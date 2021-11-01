@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 16976:
+/***/ 98048:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -98,10 +98,17 @@ var react = __webpack_require__(67294);
 ;// CONCATENATED MODULE: ./src/constants.ts
 const CDN_BASE = 'https://m.propermint.life';
 const CDN_IMAGES_PATH = '/public/images/';
-;// CONCATENATED MODULE: ./src/utilities/getFullImagePath.ts
+;// CONCATENATED MODULE: ./src/utilities/getSrcSet.ts
 
-function getFullImagePath(imagePath) {
-  return `${CDN_BASE}${CDN_IMAGES_PATH}${imagePath}`;
+const imageSizes = [240, 320, 480, 640, 750, 1080];
+function getSrcSet(imageId) {
+  return imageSizes.map(width => `${getImagePath(imageId, width)} ${width}w`).join(',');
+}
+function getSrc(imageId) {
+  return getImagePath(imageId, imageSizes[0]);
+}
+function getImagePath(imageId, size) {
+  return `${CDN_BASE}${CDN_IMAGES_PATH}${imageId}/${size}.jpg`;
 }
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(85893);
@@ -109,10 +116,11 @@ var jsx_runtime = __webpack_require__(85893);
 
 
 const PostImage = ({
-  imagePath
+  imageId
 }) => /*#__PURE__*/jsx_runtime.jsx("img", {
-  className: "object-cover h-48 w-full",
-  src: getFullImagePath(imagePath)
+  className: "object-cover w-full",
+  src: getSrc(imageId),
+  srcSet: getSrcSet(imageId)
 });
 ;// CONCATENATED MODULE: ./src/pages/posts/[id].tsx
 
@@ -139,7 +147,7 @@ function Post({
     children: [/*#__PURE__*/jsx_runtime.jsx("h1", {
       children: post.title
     }), /*#__PURE__*/jsx_runtime.jsx(PostImage, {
-      imagePath: post.imagePath
+      imageId: post.id
     }), /*#__PURE__*/(0,jsx_runtime.jsxs)("p", {
       children: ["Created by: ", post.owner]
     })]
@@ -190,7 +198,7 @@ const markdownStyle = {
 
 /***/ }),
 
-/***/ 28374:
+/***/ 90565:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -233,7 +241,7 @@ __webpack_require__.r(__webpack_exports__);
       const appMod = __webpack_require__(49064)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(16976)
+      const compMod = __webpack_require__(98048)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Component);
@@ -284,11 +292,11 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/posts/[id]",
-        buildId: "J_HaL6Gd_ZiW4C47bcIbS",
-        escapedBuildId: "J_HaL6Gd_ZiW4C47bcIbS",
+        buildId: "BL693ErryKd0VPpxH8SAO",
+        escapedBuildId: "BL693ErryKd0VPpxH8SAO",
         basePath: "",
         pageIsDynamic: true,
-        encodedPreviewProps: {previewModeId:"817ef6294e87b1c2d82f5edb15529e55",previewModeSigningKey:"794347aaa2083cc98194be7dae7c2240c6a7aba5e23b830e4347c2a0e5b31f92",previewModeEncryptionKey:"6e16a59812d3a74e90354f9e5afa5aefe9fbc9bd11afefc62afee3e98f17cf8c"}
+        encodedPreviewProps: {previewModeId:"c5b569c0c3da4e139a29e55a748b56f2",previewModeSigningKey:"fc1b19ec1bcfab527ca22bbb4d80b4fad6a121493153af337991f22ea40ac669",previewModeEncryptionKey:"9107e5208536409d0785265214e8ae46f1ac41b4df8cb2bc603ce1d5d9ff5c2b"}
       })
       
     
@@ -503,7 +511,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,893,163,874,900], () => (__webpack_require__(28374)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,893,163,874,900], () => (__webpack_require__(90565)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};

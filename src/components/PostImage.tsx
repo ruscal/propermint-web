@@ -1,12 +1,13 @@
-import { getFullImagePath } from '../utilities/getFullImagePath';
+import { getSrc, getSrcSet } from '../utilities/getSrcSet';
 
 export interface PostImageProps {
-    imagePath: string;
+    imageId: string;
 }
 
-export const PostImage = ({ imagePath }) => (
+export const PostImage = ({ imageId }) => (
     <img
-        className="object-cover h-48 w-full"
-        src={getFullImagePath(imagePath)}
+        className="object-cover w-full"
+        src={getSrc(imageId)}
+        srcSet={getSrcSet(imageId)}
     />
 );

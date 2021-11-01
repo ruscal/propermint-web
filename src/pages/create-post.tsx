@@ -12,15 +12,15 @@ const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
     ssr: false
 });
 
-const initialState: NewPost = {
+const newPost = (): NewPost => ({
     id: uuid(),
     title: '',
     content: '',
     imagePath: ''
-};
+});
 
 function CreatePost() {
-    const [post, setPost] = useState(initialState);
+    const [post, setPost] = useState(() => newPost());
     const [file, setFile] = useState(null);
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
@@ -64,7 +64,9 @@ function CreatePost() {
                 variables: { post },
                 authMode: 'AMAZON_COGNITO_USER_POOLS'
             });
-            router.push(`/posts/${post.id}`);
+            //router.push(`/posts/${post.id}`);
+            setPost(newPost());
+            router.push('/');
         } catch (err) {
             console.log('error: ', err);
             setSubmitting(false);

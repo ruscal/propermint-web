@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import { API } from 'aws-amplify';
 import { Post } from '../types';
 import { deletePost as deletePostMutation } from '../graphql';
-import { getFullImagePath } from '../utilities/getFullImagePath';
 import { PostImage } from './PostImage';
 
 export interface PostProps {
@@ -31,9 +30,7 @@ export const PostCard: FunctionComponent<PostProps> = ({
     return (
         <Link key={post.id} href={`/posts/${post.id}`}>
             <div>
-                {post.imagePath && (
-                    <PostImage imagePath={`${post.id}/sm.jpg`} />
-                )}
+                {post.imagePath && <PostImage imageId={post.id} />}
                 {post.content && <ReactMarkdown>{post.content}</ReactMarkdown>}
                 {canEdit && (
                     <>

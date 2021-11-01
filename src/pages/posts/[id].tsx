@@ -15,7 +15,7 @@ export default function Post({ post }) {
     return (
         <div>
             <h1>{post.title}</h1>
-            <PostImage imagePath={post.imagePath} />
+            <PostImage imageId={post.id} />
             {/* <div style={markdownStyle}>
                 <ReactMarkdown>{post.content}</ReactMarkdown>
             </div> */}

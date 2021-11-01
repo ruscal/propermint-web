@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 429;
-exports.ids = [429];
+exports.id = 718;
+exports.ids = [718];
 exports.modules = {
 
-/***/ 72985:
+/***/ 14887:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -25,10 +25,17 @@ var graphql = __webpack_require__(53961);
 ;// CONCATENATED MODULE: ./src/constants.ts
 const CDN_BASE = 'https://m.propermint.life';
 const CDN_IMAGES_PATH = '/public/images/';
-;// CONCATENATED MODULE: ./src/utilities/getFullImagePath.ts
+;// CONCATENATED MODULE: ./src/utilities/getSrcSet.ts
 
-function getFullImagePath(imagePath) {
-  return `${CDN_BASE}${CDN_IMAGES_PATH}${imagePath}`;
+const imageSizes = [240, 320, 480, 640, 750, 1080];
+function getSrcSet(imageId) {
+  return imageSizes.map(width => `${getImagePath(imageId, width)} ${width}w`).join(',');
+}
+function getSrc(imageId) {
+  return getImagePath(imageId, imageSizes[0]);
+}
+function getImagePath(imageId, size) {
+  return `${CDN_BASE}${CDN_IMAGES_PATH}${imageId}/${size}.jpg`;
 }
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(85893);
@@ -36,10 +43,11 @@ var jsx_runtime = __webpack_require__(85893);
 
 
 const PostImage = ({
-  imagePath
+  imageId
 }) => /*#__PURE__*/jsx_runtime.jsx("img", {
-  className: "object-cover h-48 w-full",
-  src: getFullImagePath(imagePath)
+  className: "object-cover w-full",
+  src: getSrc(imageId),
+  srcSet: getSrcSet(imageId)
 });
 ;// CONCATENATED MODULE: ./src/components/PostCard.tsx
 
@@ -72,7 +80,7 @@ const PostCard = ({
     href: `/posts/${post.id}`,
     children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
       children: [post.imagePath && /*#__PURE__*/jsx_runtime.jsx(PostImage, {
-        imagePath: `${post.id}/sm.jpg`
+        imageId: post.id
       }), post.content && /*#__PURE__*/jsx_runtime.jsx(react_markdown/* default */.Z, {
         children: post.content
       }), canEdit && /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
@@ -126,7 +134,7 @@ const buttonStyle = {
 const PostsList = ({
   children
 }) => /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-  className: "grid grid-cols-1 md:grid-cols-3 gap-4",
+  className: "grid grid-cols-1 gap-4",
   children: children
 });
 

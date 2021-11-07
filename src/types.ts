@@ -1,14 +1,20 @@
 export interface Post {
-    id: string;
+    postId: string;
     title: string;
     content: string;
     imagePath: string;
-    owner;
+    author: string;
+    channelId: string;
 }
 
 export interface NewPost {
-    id: Post['id'];
+    postId: Post['postId'];
     title: Post['title'];
     content: Post['content'];
     imagePath: Post['imagePath'];
+    channelId: Post['channelId'];
+}
+
+export interface ChannelPageProps {
+    channelId: string;
 }

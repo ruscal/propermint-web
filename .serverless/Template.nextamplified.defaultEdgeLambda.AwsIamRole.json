@@ -24,13 +24,6 @@
           "s3:GetObject",
           "s3:PutObject"
         ]
-      },
-      {
-        "Effect": "Allow",
-        "Resource": "arn:aws:sqs:us-east-1:259438430521:gdf9fjc-gq2hzwb.fifo",
-        "Action": [
-          "sqs:SendMessage"
-        ]
       }
     ]
   },

@@ -2,7 +2,153 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 84567:
+/***/ 53961:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MH": () => (/* binding */ postsByUser),
+/* harmony export */   "fR": () => (/* binding */ deletePost)
+/* harmony export */ });
+/* unused harmony exports getPostById, listPosts, createPost, updatePost */
+const getPostById =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    query getPostById($postId: ID!) {
+        getPostById(postId: $postId) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`));
+const listPosts =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    query ListPosts($channelId: ID!) {
+        listPosts(channelId: $channelId) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`));
+const postsByUser =
+/* GraphQL */
+`
+    query PostsByUsername($channelId: ID!) {
+        postsByUsername(channelId: $channelId) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`;
+const createPost =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    mutation CreatePost($post: PostInput!) {
+        createPost(post: $post) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`));
+const updatePost =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    mutation UpdatePost($post: UpdatePostInput!) {
+        updatePost(post: $post) {
+            postId
+            title
+            content
+            imagePath
+        }
+    }
+`));
+const deletePost =
+/* GraphQL */
+`
+    mutation DeletePost($postId: ID!) {
+        deletePost(postId: $postId)
+    }
+`;
+
+/***/ }),
+
+/***/ 67126:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getServerSideProps": () => (/* binding */ getServerSideProps),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var aws_amplify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(31650);
+/* harmony import */ var aws_amplify__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(aws_amplify__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _graphql__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(53961);
+/* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14887);
+/* harmony import */ var _components_PostsList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3084);
+/* harmony import */ var _utilities_getChannelProps__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(35305);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85893);
+
+
+
+
+
+
+
+
+function MyPosts({
+  channelId
+}) {
+  const {
+    0: posts,
+    1: setPosts
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    fetchPosts();
+  }, []);
+
+  async function fetchPosts() {
+    const postData = await aws_amplify__WEBPACK_IMPORTED_MODULE_4__.API.graphql({
+      query: _graphql__WEBPACK_IMPORTED_MODULE_5__/* .postsByUser */ .MH,
+      authMode: 'AMAZON_COGNITO_USER_POOLS',
+      variables: {
+        channelId
+      }
+    });
+    setPosts(postData.data.postsByUsername);
+  }
+
+  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx(_components_PostsList__WEBPACK_IMPORTED_MODULE_2__/* .PostsList */ .E, {
+    children: posts.map(post => /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx(_components_PostCard__WEBPACK_IMPORTED_MODULE_1__/* .PostCard */ .y, {
+      post: post,
+      canEdit: true,
+      onDeleted: fetchPosts
+    }, post.id))
+  });
+}
+
+function getServerSideProps(context) {
+  return {
+    props: (0,_utilities_getChannelProps__WEBPACK_IMPORTED_MODULE_6__/* .getChannelProps */ .p)(context)
+  };
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyPosts);
+
+/***/ }),
+
+/***/ 46992:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -45,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
       const appMod = __webpack_require__(42823)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(3359)
+      const compMod = __webpack_require__(67126)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Component);
@@ -95,7 +241,7 @@ __webpack_require__.r(__webpack_exports__);
 
         rewrites: combinedRewrites,
         i18n: undefined,
-        page: "/_error",
+        page: "/my-posts",
         buildId: "mijhUWEU4S6Om_Enl5_zW",
         escapedBuildId: "mijhUWEU4S6Om_Enl5_zW",
         basePath: "",
@@ -303,7 +449,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,651,893,989], () => (__webpack_require__(84567)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,651,714,989,279], () => (__webpack_require__(46992)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};
@@ -426,7 +572,7 @@ module.exports = require("zlib");
 /******/ 		// object to store loaded chunks
 /******/ 		// "1" means "loaded", otherwise not loaded yet
 /******/ 		var installedChunks = {
-/******/ 			820: 1
+/******/ 			997: 1
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.O.require = (chunkId) => (installedChunks[chunkId]);
@@ -468,8 +614,9 @@ module.exports = require("zlib");
 /******/ 			__webpack_require__.e(48);
 /******/ 			__webpack_require__.e(723);
 /******/ 			__webpack_require__.e(651);
-/******/ 			__webpack_require__.e(893);
+/******/ 			__webpack_require__.e(714);
 /******/ 			__webpack_require__.e(989);
+/******/ 			__webpack_require__.e(279);
 /******/ 			return next();
 /******/ 		};
 /******/ 	})();

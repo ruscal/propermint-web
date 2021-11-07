@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { API } from 'aws-amplify';
-import { postsByUsername } from '../graphql';
+import { postsByUser } from '../graphql';
 import { PostCard } from '../components/PostCard';
 import { PostsList } from '../components/PostsList';
+import { GetServerSidePropsResult, NextPageContext } from 'next';
+import { ChannelPageProps } from '../types';
+import { getChannelProps } from '../utilities/getChannelProps';
 
-export default function MyPosts() {
+function MyPosts({ channelId }: ChannelPageProps) {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         fetchPosts();
     }, []);
     async function fetchPosts() {
         const postData: any = await API.graphql({
-            query: postsByUsername,
-            authMode: 'AMAZON_COGNITO_USER_POOLS'
+            query: postsByUser,
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
+            variables: {
+                channelId
+            }
         });
         setPosts(postData.data.postsByUsername);
     }
@@ -31,9 +37,12 @@ export default function MyPosts() {
     );
 }
 
-const linkStyle = { fontSize: 14, marginRight: 10 };
-const itemStyle = {
-    borderBottom: '1px solid rgba(0, 0, 0 ,.1)',
-    padding: '20px 0px'
-};
-const authorStyle = { color: 'rgba(0, 0, 0, .55)', fontWeight: 600 };
+export function getServerSideProps(
+    context: NextPageContext
+): GetServerSidePropsResult<ChannelPageProps> {
+    return {
+        props: getChannelProps(context)
+    };
+}
+
+export default MyPosts;

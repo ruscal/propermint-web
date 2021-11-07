@@ -1,35 +1,35 @@
 export const getPostById = /* GraphQL */ `
     query getPostById($postId: ID!) {
         getPostById(postId: $postId) {
-            id
+            postId
             title
             content
             imagePath
-            owner
+            author
         }
     }
 `;
 
 export const listPosts = /* GraphQL */ `
-    query ListPosts {
-        listPosts {
-            id
+    query ListPosts($channelId: ID!) {
+        listPosts(channelId: $channelId) {
+            postId
             title
             content
             imagePath
-            owner
+            author
         }
     }
 `;
 
-export const postsByUsername = /* GraphQL */ `
-    query PostsByUsername {
-        postsByUsername {
-            id
+export const postsByUser = /* GraphQL */ `
+    query PostsByUsername($channelId: ID!) {
+        postsByUsername(channelId: $channelId) {
+            postId
             title
             content
             imagePath
-            owner
+            author
         }
     }
 `;
@@ -37,11 +37,11 @@ export const postsByUsername = /* GraphQL */ `
 export const createPost = /* GraphQL */ `
     mutation CreatePost($post: PostInput!) {
         createPost(post: $post) {
-            id
+            postId
             title
             content
             imagePath
-            owner
+            author
         }
     }
 `;
@@ -49,7 +49,7 @@ export const createPost = /* GraphQL */ `
 export const updatePost = /* GraphQL */ `
     mutation UpdatePost($post: UpdatePostInput!) {
         updatePost(post: $post) {
-            id
+            postId
             title
             content
             imagePath

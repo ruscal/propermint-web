@@ -1,14 +1,14 @@
 {
   "PropermintCdkStack": {
-    "Site": "https://m.propermint.life",
-    "UserPoolClientId": "37cs2rrf0vjif7c5lclfk628s2",
-    "AppSyncAPIKey": "da2-zfjkzqounna5bidojue4zlf54a",
-    "UserPoolId": "us-east-1_HYyB8iB7X",
-    "GraphQLAPIURL": "https://vp772rbkg5c7lgbpnigljn2w74.appsync-api.us-east-1.amazonaws.com/graphql",
+    "UserPoolClientId": "78fiod54nj1vq5bqsd430htnn3",
+    "AppSyncAPIKey": "da2-tlpa5fhf6rdnfnixnjjegbzia4",
+    "UserPoolId": "us-east-1_xhqQCGONP",
+    "ImageRepositoryCertificateB70ACA55": "arn:aws:acm:us-east-1:259438430521:certificate/4f830638-d46d-45f5-b555-b37a3d982f02",
+    "GraphQLAPIURL": "https://lqykphzvr5arvlt4wwfgmves2m.appsync-api.us-east-1.amazonaws.com/graphql",
+    "ImageRepositoryCDN4FF15CD6": "https://m.propermint.life",
     "ProjectRegion": "us-east-1",
-    "DistributionId": "E2EY2AHCAKF6YT",
-    "IdentityPoolId": "us-east-1:ed8d9e2f-240e-4106-9386-b94a9f23ff9c",
-    "ImageRepositoryBucket": "propermintcdkstack-imagerepository5c425389-1qvggomc29pru",
-    "Certificate": "arn:aws:acm:us-east-1:259438430521:certificate/36e93823-b975-4d45-a982-29808ea7e870"
+    "DistributionId": "E35ECXPK65Z1O2",
+    "IdentityPoolId": "us-east-1:c80ed561-871e-47be-a338-bac8edc4c563",
+    "ImageRepositoryBucket": "propermintcdkstack-imagerepositoryimagerepository-1sqr4wzmqccaj"
   }
 }

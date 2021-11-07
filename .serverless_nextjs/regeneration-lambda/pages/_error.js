@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2230:
+/***/ 84567:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -42,7 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 
       const documentModule = __webpack_require__(88881)
 
-      const appMod = __webpack_require__(49064)
+      const appMod = __webpack_require__(42823)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
       const compMod = __webpack_require__(3359)
@@ -96,26 +96,14 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/_error",
-        buildId: "BL693ErryKd0VPpxH8SAO",
-        escapedBuildId: "BL693ErryKd0VPpxH8SAO",
+        buildId: "mijhUWEU4S6Om_Enl5_zW",
+        escapedBuildId: "mijhUWEU4S6Om_Enl5_zW",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"c5b569c0c3da4e139a29e55a748b56f2",previewModeSigningKey:"fc1b19ec1bcfab527ca22bbb4d80b4fad6a121493153af337991f22ea40ac669",previewModeEncryptionKey:"9107e5208536409d0785265214e8ae46f1ac41b4df8cb2bc603ce1d5d9ff5c2b"}
+        encodedPreviewProps: {previewModeId:"a77a55e0a69c6c475bc5ddda0019208e",previewModeSigningKey:"d2b08204fc9ce39124f35377137bdb58c02ed6ffdf916ab78bac34941923b707",previewModeEncryptionKey:"a41ef5dce9a9330e21641f3ac645d1d0b868b45d7795701476278cd2e501a7b9"}
       })
       
     
-
-/***/ }),
-
-/***/ 67294:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-if (true) {
-  module.exports = __webpack_require__(72408);
-} else {}
-
 
 /***/ }),
 
@@ -315,7 +303,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,893,651,874,900], () => (__webpack_require__(2230)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,651,893,989], () => (__webpack_require__(84567)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};
@@ -479,10 +467,9 @@ module.exports = require("zlib");
 /******/ 		__webpack_require__.x = () => {
 /******/ 			__webpack_require__.e(48);
 /******/ 			__webpack_require__.e(723);
-/******/ 			__webpack_require__.e(893);
 /******/ 			__webpack_require__.e(651);
-/******/ 			__webpack_require__.e(874);
-/******/ 			__webpack_require__.e(900);
+/******/ 			__webpack_require__.e(893);
+/******/ 			__webpack_require__.e(989);
 /******/ 			return next();
 /******/ 		};
 /******/ 	})();

@@ -3,15 +3,21 @@ import { API } from 'aws-amplify';
 import { listPosts } from '../graphql';
 import { PostCard } from '../components/PostCard';
 import { PostsList } from '../components/PostsList';
+import { GetServerSidePropsResult, NextPageContext } from 'next';
+import { ChannelPageProps } from '../types';
+import { getChannelProps } from '../utilities/getChannelProps';
 
-export default function Home() {
+function Home({ channelId }: ChannelPageProps) {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         fetchPosts();
     }, []);
     async function fetchPosts() {
         const postData: any = await API.graphql({
-            query: listPosts
+            query: listPosts,
+            variables: {
+                channelId
+            }
         });
         console.log('postData: ', postData);
         setPosts(postData.data.listPosts);
@@ -24,3 +30,13 @@ export default function Home() {
         </PostsList>
     );
 }
+
+export function getServerSideProps(
+    context: NextPageContext
+): GetServerSidePropsResult<ChannelPageProps> {
+    return {
+        props: getChannelProps(context)
+    };
+}
+
+export default Home;

@@ -6,21 +6,24 @@ import { useRouter } from 'next/router';
 import 'easymde/dist/easymde.min.css';
 import { createPost } from '../graphql';
 import dynamic from 'next/dynamic';
-import { NewPost } from '../types';
+import { ChannelPageProps, NewPost } from '../types';
+import { GetServerSidePropsResult, NextPageContext } from 'next';
+import { getChannelProps } from '../utilities/getChannelProps';
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
     ssr: false
 });
 
-const newPost = (): NewPost => ({
-    id: uuid(),
+const newPost = (channelId: string): NewPost => ({
+    postId: uuid(),
     title: '',
     content: '',
-    imagePath: ''
+    imagePath: '',
+    channelId
 });
 
-function CreatePost() {
-    const [post, setPost] = useState(() => newPost());
+function CreatePost({ channelId }: ChannelPageProps) {
+    const [post, setPost] = useState(() => newPost(channelId));
     const [file, setFile] = useState(null);
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
@@ -38,7 +41,7 @@ function CreatePost() {
         const fileForUpload = files[0];
         setFile(fileForUpload || value);
         const extension = fileForUpload.name.split('.')[1];
-        const imagePath = `${post.id}/original.${extension}`;
+        const imagePath = `${post.postId}/original.${extension}`;
         setPost(() => ({ ...post, imagePath }));
     }
 
@@ -65,7 +68,7 @@ function CreatePost() {
                 authMode: 'AMAZON_COGNITO_USER_POOLS'
             });
             //router.push(`/posts/${post.id}`);
-            setPost(newPost());
+            setPost(newPost(channelId));
             router.push('/');
         } catch (err) {
             console.log('error: ', err);
@@ -102,6 +105,14 @@ function CreatePost() {
             </button>
         </div>
     );
+}
+
+export function getServerSideProps(
+    context: NextPageContext
+): GetServerSidePropsResult<ChannelPageProps> {
+    return {
+        props: getChannelProps(context)
+    };
 }
 
 export default withAuthenticator(CreatePost);

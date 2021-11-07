@@ -28,21 +28,21 @@ export const PostCard: FunctionComponent<PostProps> = ({
     }
 
     return (
-        <Link key={post.id} href={`/posts/${post.id}`}>
+        <Link key={post.postId} href={`/posts/${post.postId}`}>
             <div>
-                {post.imagePath && <PostImage imageId={post.id} />}
+                {post.imagePath && <PostImage imageId={post.postId} />}
                 {post.content && <ReactMarkdown>{post.content}</ReactMarkdown>}
                 {canEdit && (
                     <>
-                        <Link href={`/edit-post/${post.id}`}>
+                        {/* <Link href={`/posts/${post.postId}/edit`}>
                             <a style={linkStyle}>Edit Post</a>
-                        </Link>
-                        <Link href={`/posts/${post.id}`}>
+                        </Link> */}
+                        {/* <Link href={`/posts/${post.postId}`}>
                             <a style={linkStyle}>View Post</a>
-                        </Link>
+                        </Link> */}
                         <button
                             style={buttonStyle}
-                            onClick={() => deletePost(post.id)}
+                            onClick={() => deletePost(post.postId)}
                         >
                             Delete Post
                         </button>

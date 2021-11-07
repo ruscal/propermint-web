@@ -2,7 +2,279 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 84567:
+/***/ 94054:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ create_post),
+  "getServerSideProps": () => (/* binding */ getServerSideProps)
+});
+
+// EXTERNAL MODULE: ./node_modules/@aws-amplify/ui-react/lib/index.js
+var lib = __webpack_require__(67635);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/aws-amplify/lib/index.js
+var aws_amplify_lib = __webpack_require__(31650);
+// EXTERNAL MODULE: ./node_modules/uuid/dist/esm-node/v4.js
+var v4 = __webpack_require__(9568);
+// EXTERNAL MODULE: ./node_modules/next/router.js
+var next_router = __webpack_require__(11163);
+;// CONCATENATED MODULE: ./src/graphql.ts
+const getPostById =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    query getPostById($postId: ID!) {
+        getPostById(postId: $postId) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`));
+const listPosts =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    query ListPosts($channelId: ID!) {
+        listPosts(channelId: $channelId) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`));
+const postsByUser =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    query PostsByUsername($channelId: ID!) {
+        postsByUsername(channelId: $channelId) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`));
+const createPost =
+/* GraphQL */
+`
+    mutation CreatePost($post: PostInput!) {
+        createPost(post: $post) {
+            postId
+            title
+            content
+            imagePath
+            author
+        }
+    }
+`;
+const updatePost =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    mutation UpdatePost($post: UpdatePostInput!) {
+        updatePost(post: $post) {
+            postId
+            title
+            content
+            imagePath
+        }
+    }
+`));
+const deletePost =
+/* GraphQL */
+(/* unused pure expression or super */ null && (`
+    mutation DeletePost($postId: ID!) {
+        deletePost(postId: $postId)
+    }
+`));
+// EXTERNAL MODULE: ./node_modules/next/dynamic.js
+var dynamic = __webpack_require__(5152);
+;// CONCATENATED MODULE: ./src/utilities/getCurrentChannel.ts
+const CHANNEL_SUB_DOMAIN_REGEX = /([a-zA-Z0-9 -_.]+).propermint.life/gi;
+function getCurrentChannel(hostname) {
+  console.log({
+    hostname
+  });
+  const match = hostname.match(CHANNEL_SUB_DOMAIN_REGEX);
+  return match && match[1] || 'test';
+}
+;// CONCATENATED MODULE: ./src/utilities/getChannelProps.ts
+
+function getChannelProps(context) {
+  return {
+    channelId: getCurrentChannel(context.req.headers.host)
+  };
+}
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(85893);
+;// CONCATENATED MODULE: ./src/pages/create-post.tsx
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+const SimpleMDE = (0,dynamic.default)(() => __webpack_require__.e(/* import() */ 634).then(__webpack_require__.bind(__webpack_require__, 81634)), {
+  ssr: false,
+  loadableGenerated: {
+    webpack: () => [/*require.resolve*/(81634)],
+    modules: ["create-post.tsx -> " + 'react-simplemde-editor']
+  }
+});
+
+const newPost = channelId => ({
+  postId: (0,v4/* default */.Z)(),
+  title: '',
+  content: '',
+  imagePath: '',
+  channelId
+});
+
+function CreatePost({
+  channelId
+}) {
+  const {
+    0: post,
+    1: setPost
+  } = (0,react.useState)(() => newPost(channelId));
+  const {
+    0: file,
+    1: setFile
+  } = (0,react.useState)(null);
+  const {
+    0: error,
+    1: setError
+  } = (0,react.useState)('');
+  const {
+    0: submitting,
+    1: setSubmitting
+  } = (0,react.useState)(false);
+  const {
+    title,
+    content
+  } = post;
+  const router = (0,next_router.useRouter)();
+
+  function onChange(e) {
+    setPost(() => _objectSpread(_objectSpread({}, post), {}, {
+      [e.target.name]: e.target.value
+    }));
+  }
+
+  function onFileChange(event) {
+    const {
+      target: {
+        value,
+        files
+      }
+    } = event;
+    const fileForUpload = files[0];
+    setFile(fileForUpload || value);
+    const extension = fileForUpload.name.split('.')[1];
+    const imagePath = `${post.postId}/original.${extension}`;
+    setPost(() => _objectSpread(_objectSpread({}, post), {}, {
+      imagePath
+    }));
+  }
+
+  function isFormValid() {
+    return title && file;
+  }
+
+  async function createNewPost() {
+    if (!isFormValid()) {
+      setError('Please complete all fields');
+      return;
+    }
+
+    try {
+      const {
+        type: mimeType
+      } = file;
+      const key = `images/${post.imagePath}`;
+      setSubmitting(true);
+      await aws_amplify_lib.Storage.put(key, file, {
+        contentType: mimeType
+      });
+      await aws_amplify_lib.API.graphql({
+        query: createPost,
+        variables: {
+          post
+        },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      }); //router.push(`/posts/${post.id}`);
+
+      setPost(newPost(channelId));
+      router.push('/');
+    } catch (err) {
+      console.log('error: ', err);
+      setSubmitting(false);
+    }
+  }
+
+  if (!SimpleMDE) {
+    return null;
+  }
+
+  if (submitting) {
+    return /*#__PURE__*/jsx_runtime.jsx("p", {
+      children: "Submitting ..."
+    });
+  }
+
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "grid grid-cols-1 gap-y-1",
+    children: [/*#__PURE__*/jsx_runtime.jsx("h2", {
+      children: "Add memory"
+    }), error && /*#__PURE__*/jsx_runtime.jsx("p", {
+      children: error
+    }), /*#__PURE__*/jsx_runtime.jsx("input", {
+      onChange: onChange,
+      name: "title",
+      placeholder: "Title",
+      value: post.title,
+      type: "text"
+    }), /*#__PURE__*/jsx_runtime.jsx("input", {
+      type: "file",
+      onChange: onFileChange
+    }), /*#__PURE__*/jsx_runtime.jsx("button", {
+      className: "btn btn-primary",
+      onClick: createNewPost,
+      children: "Submit"
+    })]
+  });
+}
+
+function getServerSideProps(context) {
+  return {
+    props: getChannelProps(context)
+  };
+}
+/* harmony default export */ const create_post = ((0,lib.withAuthenticator)(CreatePost));
+
+/***/ }),
+
+/***/ 69730:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -45,7 +317,7 @@ __webpack_require__.r(__webpack_exports__);
       const appMod = __webpack_require__(42823)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(3359)
+      const compMod = __webpack_require__(94054)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Component);
@@ -95,7 +367,7 @@ __webpack_require__.r(__webpack_exports__);
 
         rewrites: combinedRewrites,
         i18n: undefined,
-        page: "/_error",
+        page: "/create-post",
         buildId: "mijhUWEU4S6Om_Enl5_zW",
         escapedBuildId: "mijhUWEU4S6Om_Enl5_zW",
         basePath: "",
@@ -303,7 +575,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,651,893,989], () => (__webpack_require__(84567)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,893,309,929,989,873], () => (__webpack_require__(69730)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};
@@ -426,7 +698,7 @@ module.exports = require("zlib");
 /******/ 		// object to store loaded chunks
 /******/ 		// "1" means "loaded", otherwise not loaded yet
 /******/ 		var installedChunks = {
-/******/ 			820: 1
+/******/ 			25: 1
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.O.require = (chunkId) => (installedChunks[chunkId]);
@@ -467,9 +739,11 @@ module.exports = require("zlib");
 /******/ 		__webpack_require__.x = () => {
 /******/ 			__webpack_require__.e(48);
 /******/ 			__webpack_require__.e(723);
-/******/ 			__webpack_require__.e(651);
 /******/ 			__webpack_require__.e(893);
+/******/ 			__webpack_require__.e(309);
+/******/ 			__webpack_require__.e(929);
 /******/ 			__webpack_require__.e(989);
+/******/ 			__webpack_require__.e(873);
 /******/ 			return next();
 /******/ 		};
 /******/ 	})();

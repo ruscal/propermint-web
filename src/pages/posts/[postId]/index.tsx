@@ -20,7 +20,7 @@ export function ViewPost({ post }) {
     return (
         <div>
             <h1>{post.title}</h1>
-            <PostImage imageId={post.postId} />
+            <PostImage channelId={post.channelId} imageId={post.postId} />
             {/* <div style={markdownStyle}>
                 <ReactMarkdown>{post.content}</ReactMarkdown>
             </div> */}

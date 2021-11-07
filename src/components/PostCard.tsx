@@ -28,28 +28,41 @@ export const PostCard: FunctionComponent<PostProps> = ({
     }
 
     return (
-        <Link key={post.postId} href={`/posts/${post.postId}`}>
-            <div>
-                {post.imagePath && <PostImage imageId={post.postId} />}
+        <div className="post flex flex-col border border-gray-300 bg-white">
+            <div className="post--header flex flex-col">
+                <div className="post--header--title  px-2 py-1">
+                    {post.title}
+                </div>
+                <div className="post--header--author text-sm text-gray-300 px-2 py-1 pt-0">
+                    {post.author}
+                </div>
+            </div>
+            <div className="post--content">
+                {post.imagePath && (
+                    <PostImage
+                        channelId={post.channelId}
+                        imageId={post.postId}
+                    />
+                )}
                 {post.content && <ReactMarkdown>{post.content}</ReactMarkdown>}
-                {canEdit && (
-                    <>
-                        {/* <Link href={`/posts/${post.postId}/edit`}>
+            </div>
+            {canEdit && (
+                <div>
+                    {/* <Link href={`/posts/${post.postId}/edit`}>
                             <a style={linkStyle}>Edit Post</a>
                         </Link> */}
-                        {/* <Link href={`/posts/${post.postId}`}>
+                    {/* <Link href={`/posts/${post.postId}`}>
                             <a style={linkStyle}>View Post</a>
                         </Link> */}
-                        <button
-                            style={buttonStyle}
-                            onClick={() => deletePost(post.postId)}
-                        >
-                            Delete Post
-                        </button>
-                    </>
-                )}
-            </div>
-        </Link>
+                    <button
+                        style={buttonStyle}
+                        onClick={() => deletePost(post.postId)}
+                    >
+                        Delete Post
+                    </button>
+                </div>
+            )}
+        </div>
     );
 };
 

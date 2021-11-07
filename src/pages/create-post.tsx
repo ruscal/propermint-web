@@ -27,7 +27,7 @@ function CreatePost({ channelId }: ChannelPageProps) {
     const [file, setFile] = useState(null);
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
-    const { title, content } = post;
+    const { title } = post;
     const router = useRouter();
 
     function onChange(e) {
@@ -41,7 +41,7 @@ function CreatePost({ channelId }: ChannelPageProps) {
         const fileForUpload = files[0];
         setFile(fileForUpload || value);
         const extension = fileForUpload.name.split('.')[1];
-        const imagePath = `${post.postId}/original.${extension}`;
+        const imagePath = `${post.channelId}/${post.postId}/original.${extension}`;
         setPost(() => ({ ...post, imagePath }));
     }
 

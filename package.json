@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@aws-amplify/ui-react": "^1.2.20",
+        "@heroicons/react": "^1.0.5",
         "@tailwindcss/forms": "^0.3.4",
         "aws-amplify": "^4.3.2",
         "easymde": "^2.15.0",

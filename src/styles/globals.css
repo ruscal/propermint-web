@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply bg-gray-50;
+}
+
 .btn {
     @apply font-bold py-2 px-4 rounded;
 }
@@ -11,4 +15,17 @@
 }
 .btn-primary:hover {
     @apply bg-blue-700;
+}
+
+h2 {
+    @apply text-xl;
+    @apply mt-4;
+}
+
+a {
+    @apply text-gray-400;
+}
+
+a:hover {
+    @apply text-gray-600;
 }

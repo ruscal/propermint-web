@@ -35,6 +35,7 @@ const getPostById =
             content
             imagePath
             author
+            channelId
         }
     }
 `));
@@ -48,6 +49,7 @@ const listPosts =
             content
             imagePath
             author
+            channelId
         }
     }
 `));
@@ -61,6 +63,7 @@ const postsByUser =
             content
             imagePath
             author
+            channelId
         }
     }
 `));
@@ -74,6 +77,7 @@ const createPost =
             content
             imagePath
             author
+            channelId
         }
     }
 `;
@@ -86,6 +90,8 @@ const updatePost =
             title
             content
             imagePath
+            author
+            channelId
         }
     }
 `));
@@ -99,7 +105,7 @@ const deletePost =
 // EXTERNAL MODULE: ./node_modules/next/dynamic.js
 var dynamic = __webpack_require__(5152);
 ;// CONCATENATED MODULE: ./src/utilities/getCurrentChannel.ts
-const CHANNEL_SUB_DOMAIN_REGEX = /([a-zA-Z0-9 -_.]+).propermint.life/gi;
+const CHANNEL_SUB_DOMAIN_REGEX = /([a-zA-Z0-9 -_.]+).propermint.life/i;
 function getCurrentChannel(hostname) {
   console.log({
     hostname
@@ -170,8 +176,7 @@ function CreatePost({
     1: setSubmitting
   } = (0,react.useState)(false);
   const {
-    title,
-    content
+    title
   } = post;
   const router = (0,next_router.useRouter)();
 
@@ -191,7 +196,7 @@ function CreatePost({
     const fileForUpload = files[0];
     setFile(fileForUpload || value);
     const extension = fileForUpload.name.split('.')[1];
-    const imagePath = `${post.postId}/original.${extension}`;
+    const imagePath = `${post.channelId}/${post.postId}/original.${extension}`;
     setPost(() => _objectSpread(_objectSpread({}, post), {}, {
       imagePath
     }));
@@ -222,10 +227,11 @@ function CreatePost({
           post
         },
         authMode: 'AMAZON_COGNITO_USER_POOLS'
-      }); //router.push(`/posts/${post.id}`);
-
-      setPost(newPost(channelId));
-      router.push('/');
+      });
+      setTimeout(() => {
+        setPost(newPost(channelId));
+        router.push('/');
+      }, 1000); //router.push(`/posts/${post.id}`);
     } catch (err) {
       console.log('error: ', err);
       setSubmitting(false);
@@ -274,7 +280,7 @@ function getServerSideProps(context) {
 
 /***/ }),
 
-/***/ 69730:
+/***/ 44011:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -314,7 +320,7 @@ __webpack_require__.r(__webpack_exports__);
 
       const documentModule = __webpack_require__(88881)
 
-      const appMod = __webpack_require__(42823)
+      const appMod = __webpack_require__(38841)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
       const compMod = __webpack_require__(94054)
@@ -368,11 +374,11 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/create-post",
-        buildId: "mijhUWEU4S6Om_Enl5_zW",
-        escapedBuildId: "mijhUWEU4S6Om_Enl5_zW",
+        buildId: "SUFeMt5xr5ImDEpQ6ENsA",
+        escapedBuildId: "SUFeMt5xr5ImDEpQ6ENsA",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"a77a55e0a69c6c475bc5ddda0019208e",previewModeSigningKey:"d2b08204fc9ce39124f35377137bdb58c02ed6ffdf916ab78bac34941923b707",previewModeEncryptionKey:"a41ef5dce9a9330e21641f3ac645d1d0b868b45d7795701476278cd2e501a7b9"}
+        encodedPreviewProps: {previewModeId:"f03c63d03ae76703226e55b30ce84418",previewModeSigningKey:"6f142a526eed2f907162dcc821630ac5d5406b82cea8976c3240908cfbe96f8c",previewModeEncryptionKey:"85f19c50e3e9c626eb978b3c5d7617f6ff1a306ac5f2ebc3fc7d39ad4fd9565d"}
       })
       
     
@@ -575,7 +581,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,723,893,309,929,989,873], () => (__webpack_require__(69730)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,188,375,163,309,152,874,589,873], () => (__webpack_require__(44011)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};
@@ -738,11 +744,13 @@ module.exports = require("zlib");
 /******/ 		var next = __webpack_require__.x;
 /******/ 		__webpack_require__.x = () => {
 /******/ 			__webpack_require__.e(48);
-/******/ 			__webpack_require__.e(723);
-/******/ 			__webpack_require__.e(893);
+/******/ 			__webpack_require__.e(188);
+/******/ 			__webpack_require__.e(375);
+/******/ 			__webpack_require__.e(163);
 /******/ 			__webpack_require__.e(309);
-/******/ 			__webpack_require__.e(929);
-/******/ 			__webpack_require__.e(989);
+/******/ 			__webpack_require__.e(152);
+/******/ 			__webpack_require__.e(874);
+/******/ 			__webpack_require__.e(589);
 /******/ 			__webpack_require__.e(873);
 /******/ 			return next();
 /******/ 		};

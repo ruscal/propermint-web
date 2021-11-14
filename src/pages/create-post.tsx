@@ -62,14 +62,18 @@ function CreatePost({ channelId }: ChannelPageProps) {
             await Storage.put(key, file, {
                 contentType: mimeType
             });
+
             await API.graphql({
                 query: createPost,
                 variables: { post },
                 authMode: 'AMAZON_COGNITO_USER_POOLS'
             });
+
+            setTimeout(() => {
+                setPost(newPost(channelId));
+                router.push('/');
+            }, 1000);
             //router.push(`/posts/${post.id}`);
-            setPost(newPost(channelId));
-            router.push('/');
         } catch (err) {
             console.log('error: ', err);
             setSubmitting(false);

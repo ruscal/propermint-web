@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 38480:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ handler)
@@ -18,25 +18,17 @@ function handler(req, res) {
 
 /***/ }),
 
-/***/ 9946:
+/***/ 95529:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ next_serverless_loaderpage_2Fapi_2Fhello_absolutePagePath_private_next_pages_2Fapi_2Fhello_ts_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_next_2Fdist_2Fpages_2F_document_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_mijhUWEU4S6Om_Enl5_zW_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22a77a55e0a69c6c475bc5ddda0019208e_22_2C_22previewModeSigningKey_22_3A_22d2b08204fc9ce39124f35377137bdb58c02ed6ffdf916ab78bac34941923b707_22_2C_22previewModeEncryptionKey_22_3A_22a41ef5dce9a9330e21641f3ac645d1d0b868b45d7795701476278cd2e501a7b9_22_7D_loadedEnvFiles_W10_3D_i18n_)
-});
-
-// EXTERNAL MODULE: ./node_modules/next/dist/server/node-polyfill-fetch.js
-var node_polyfill_fetch = __webpack_require__(70607);
-;// CONCATENATED MODULE: ./.next/routes-manifest.json
-const routes_manifest_namespaceObject = {"Dg":[]};
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/api-handler.js
-var api_handler = __webpack_require__(88277);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fapi%2Fhello&absolutePagePath=private-next-pages%2Fapi%2Fhello.ts&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=next%2Fdist%2Fpages%2F_document&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=mijhUWEU4S6Om_Enl5_zW&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22a77a55e0a69c6c475bc5ddda0019208e%22%2C%22previewModeSigningKey%22%3A%22d2b08204fc9ce39124f35377137bdb58c02ed6ffdf916ab78bac34941923b707%22%2C%22previewModeEncryptionKey%22%3A%22a41ef5dce9a9330e21641f3ac645d1d0b868b45d7795701476278cd2e501a7b9%22%7D&loadedEnvFiles=W10%3D&i18n=!
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var next_dist_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(70607);
+/* harmony import */ var next_dist_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59450);
+/* harmony import */ var next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(88277);
 
         
       const { processEnv } = __webpack_require__(72333)
@@ -49,49 +41,33 @@ var api_handler = __webpack_require__(88277);
 
         
 
-        const combinedRewrites = Array.isArray(routes_manifest_namespaceObject.Dg)
-          ? routes_manifest_namespaceObject.Dg
+        const combinedRewrites = Array.isArray(private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__/* .rewrites */ .Dg)
+          ? private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__/* .rewrites */ .Dg
           : []
 
-        if (!Array.isArray(routes_manifest_namespaceObject.Dg)) {
-          combinedRewrites.push(...routes_manifest_namespaceObject.Dg.beforeFiles)
-          combinedRewrites.push(...routes_manifest_namespaceObject.Dg.afterFiles)
-          combinedRewrites.push(...routes_manifest_namespaceObject.Dg.fallback)
+        if (!Array.isArray(private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__/* .rewrites */ .Dg)) {
+          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__/* .rewrites.beforeFiles */ .Dg.beforeFiles)
+          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__/* .rewrites.afterFiles */ .Dg.afterFiles)
+          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_1__/* .rewrites.fallback */ .Dg.fallback)
         }
 
-        const apiHandler = (0,api_handler/* getApiHandler */.Y)({
+        const apiHandler = (0,next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_2__/* .getApiHandler */ .Y)({
           pageModule: __webpack_require__(38480),
           rewrites: combinedRewrites,
           i18n: undefined,
           page: "/api/hello",
           basePath: "",
           pageIsDynamic: false,
-          encodedPreviewProps: {previewModeId:"a77a55e0a69c6c475bc5ddda0019208e",previewModeSigningKey:"d2b08204fc9ce39124f35377137bdb58c02ed6ffdf916ab78bac34941923b707",previewModeEncryptionKey:"a41ef5dce9a9330e21641f3ac645d1d0b868b45d7795701476278cd2e501a7b9"}
+          encodedPreviewProps: {previewModeId:"f03c63d03ae76703226e55b30ce84418",previewModeSigningKey:"6f142a526eed2f907162dcc821630ac5d5406b82cea8976c3240908cfbe96f8c",previewModeEncryptionKey:"85f19c50e3e9c626eb978b3c5d7617f6ff1a306ac5f2ebc3fc7d39ad4fd9565d"}
         })
-        /* harmony default export */ const next_serverless_loaderpage_2Fapi_2Fhello_absolutePagePath_private_next_pages_2Fapi_2Fhello_ts_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_next_2Fdist_2Fpages_2F_document_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_mijhUWEU4S6Om_Enl5_zW_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22a77a55e0a69c6c475bc5ddda0019208e_22_2C_22previewModeSigningKey_22_3A_22d2b08204fc9ce39124f35377137bdb58c02ed6ffdf916ab78bac34941923b707_22_2C_22previewModeEncryptionKey_22_3A_22a41ef5dce9a9330e21641f3ac645d1d0b868b45d7795701476278cd2e501a7b9_22_7D_loadedEnvFiles_W10_3D_i18n_ = (apiHandler);
+        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (apiHandler);
       
-
-/***/ }),
-
-/***/ 59521:
-/***/ ((module) => {
-
-function webpackEmptyContext(req) {
-	var e = new Error("Cannot find module '" + req + "'");
-	e.code = 'MODULE_NOT_FOUND';
-	throw e;
-}
-webpackEmptyContext.keys = () => ([]);
-webpackEmptyContext.resolve = webpackEmptyContext;
-webpackEmptyContext.id = 59521;
-module.exports = webpackEmptyContext;
 
 /***/ }),
 
 /***/ 64293:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("buffer");
 
 /***/ }),
@@ -99,7 +75,6 @@ module.exports = require("buffer");
 /***/ 76417:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("crypto");
 
 /***/ }),
@@ -107,7 +82,6 @@ module.exports = require("crypto");
 /***/ 28614:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("events");
 
 /***/ }),
@@ -115,7 +89,6 @@ module.exports = require("events");
 /***/ 35747:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("fs");
 
 /***/ }),
@@ -123,7 +96,6 @@ module.exports = require("fs");
 /***/ 98605:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("http");
 
 /***/ }),
@@ -131,7 +103,6 @@ module.exports = require("http");
 /***/ 57211:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("https");
 
 /***/ }),
@@ -139,7 +110,6 @@ module.exports = require("https");
 /***/ 85622:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("path");
 
 /***/ }),
@@ -147,7 +117,6 @@ module.exports = require("path");
 /***/ 71191:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("querystring");
 
 /***/ }),
@@ -155,7 +124,6 @@ module.exports = require("querystring");
 /***/ 92413:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("stream");
 
 /***/ }),
@@ -163,7 +131,6 @@ module.exports = require("stream");
 /***/ 24304:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("string_decoder");
 
 /***/ }),
@@ -171,7 +138,6 @@ module.exports = require("string_decoder");
 /***/ 78835:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("url");
 
 /***/ }),
@@ -179,7 +145,6 @@ module.exports = require("url");
 /***/ 31669:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("util");
 
 /***/ }),
@@ -187,7 +152,6 @@ module.exports = require("util");
 /***/ 78761:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("zlib");
 
 /***/ })
@@ -231,7 +195,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,774], () => (__webpack_require__(9946)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,774,874], () => (__webpack_require__(95529)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};
@@ -266,6 +230,18 @@ module.exports = require("zlib");
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -374,6 +350,7 @@ module.exports = require("zlib");
 /******/ 		__webpack_require__.x = () => {
 /******/ 			__webpack_require__.e(48);
 /******/ 			__webpack_require__.e(774);
+/******/ 			__webpack_require__.e(874);
 /******/ 			return next();
 /******/ 		};
 /******/ 	})();

@@ -41,7 +41,7 @@ function CreatePost({ channelId }: ChannelPageProps) {
         const fileForUpload = files[0];
         setFile(fileForUpload || value);
         const extension = fileForUpload.name.split('.')[1];
-        const imagePath = `${post.channelId}/${post.postId}/original.${extension}`;
+        const imagePath = `original.${extension}`;
         setPost(() => ({ ...post, imagePath }));
     }
 
@@ -57,7 +57,7 @@ function CreatePost({ channelId }: ChannelPageProps) {
 
         try {
             const { type: mimeType } = file;
-            const key = `images/${post.imagePath}`;
+            const key = `images/${post.channelId}/${post.postId}/${post.imagePath}`;
             setSubmitting(true);
             await Storage.put(key, file, {
                 contentType: mimeType

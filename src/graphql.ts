@@ -7,6 +7,7 @@ export const getPostById = /* GraphQL */ `
             imagePath
             author
             channelId
+            status
         }
     }
 `;
@@ -20,6 +21,7 @@ export const listPosts = /* GraphQL */ `
             imagePath
             author
             channelId
+            status
         }
     }
 `;
@@ -33,6 +35,7 @@ export const postsByUser = /* GraphQL */ `
             imagePath
             author
             channelId
+            status
         }
     }
 `;
@@ -46,6 +49,7 @@ export const createPost = /* GraphQL */ `
             imagePath
             author
             channelId
+            status
         }
     }
 `;
@@ -59,6 +63,7 @@ export const updatePost = /* GraphQL */ `
             imagePath
             author
             channelId
+            status
         }
     }
 `;

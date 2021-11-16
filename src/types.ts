@@ -1,3 +1,9 @@
+export enum PostStatus {
+    Processing = 'processing',
+    Live = 'live',
+    Suppressed = 'suppressed'
+}
+
 export interface Post {
     postId: string;
     title: string;
@@ -5,6 +11,7 @@ export interface Post {
     imagePath: string;
     author: string;
     channelId: string;
+    status: PostStatus;
 }
 
 export interface NewPost {

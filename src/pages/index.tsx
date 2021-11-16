@@ -15,6 +15,7 @@ function Home({ channelId }: ChannelPageProps) {
     async function fetchPosts() {
         const postData: any = await API.graphql({
             query: listPosts,
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
             variables: {
                 channelId
             }

@@ -36,6 +36,7 @@ const getPostById =
             imagePath
             author
             channelId
+            status
         }
     }
 `));
@@ -50,6 +51,7 @@ const listPosts =
             imagePath
             author
             channelId
+            status
         }
     }
 `));
@@ -64,6 +66,7 @@ const postsByUser =
             imagePath
             author
             channelId
+            status
         }
     }
 `));
@@ -78,6 +81,7 @@ const createPost =
             imagePath
             author
             channelId
+            status
         }
     }
 `;
@@ -92,6 +96,7 @@ const updatePost =
             imagePath
             author
             channelId
+            status
         }
     }
 `));
@@ -196,7 +201,7 @@ function CreatePost({
     const fileForUpload = files[0];
     setFile(fileForUpload || value);
     const extension = fileForUpload.name.split('.')[1];
-    const imagePath = `${post.channelId}/${post.postId}/original.${extension}`;
+    const imagePath = `original.${extension}`;
     setPost(() => _objectSpread(_objectSpread({}, post), {}, {
       imagePath
     }));
@@ -216,7 +221,7 @@ function CreatePost({
       const {
         type: mimeType
       } = file;
-      const key = `images/${post.imagePath}`;
+      const key = `images/${post.channelId}/${post.postId}/${post.imagePath}`;
       setSubmitting(true);
       await aws_amplify_lib.Storage.put(key, file, {
         contentType: mimeType
@@ -280,7 +285,7 @@ function getServerSideProps(context) {
 
 /***/ }),
 
-/***/ 44011:
+/***/ 82333:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -374,11 +379,11 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/create-post",
-        buildId: "SUFeMt5xr5ImDEpQ6ENsA",
-        escapedBuildId: "SUFeMt5xr5ImDEpQ6ENsA",
+        buildId: "uKQUohlDWSNfevlhB-gHr",
+        escapedBuildId: "uKQUohlDWSNfevlhB\-gHr",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"f03c63d03ae76703226e55b30ce84418",previewModeSigningKey:"6f142a526eed2f907162dcc821630ac5d5406b82cea8976c3240908cfbe96f8c",previewModeEncryptionKey:"85f19c50e3e9c626eb978b3c5d7617f6ff1a306ac5f2ebc3fc7d39ad4fd9565d"}
+        encodedPreviewProps: {previewModeId:"13ff278e3adfa9da938f3927be285af7",previewModeSigningKey:"182349ab14e70a659e8807e6ba76ebbcd9f9676639532bb50a6c5a985b34d78d",previewModeEncryptionKey:"ab0e16887a9535e4d7ba080ddb033360f03504d905dd498b1cb125921d3a1800"}
       })
       
     
@@ -581,7 +586,7 @@ module.exports = require("zlib");
 /******/ 	__webpack_require__.x = () => {
 /******/ 		// Load entry module and return exports
 /******/ 		// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,188,375,163,309,152,874,589,873], () => (__webpack_require__(44011)))
+/******/ 		var __webpack_exports__ = __webpack_require__.O(undefined, [48,188,375,163,309,152,874,589,873], () => (__webpack_require__(82333)))
 /******/ 		__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 		return __webpack_exports__;
 /******/ 	};

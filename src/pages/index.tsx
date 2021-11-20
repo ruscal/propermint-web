@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API } from 'aws-amplify';
+import { API, Auth } from 'aws-amplify';
 import { listPosts } from '../graphql';
 import { PostCard } from '../components/PostCard';
 import { PostsList } from '../components/PostsList';
@@ -7,7 +7,11 @@ import { GetServerSidePropsResult, NextPageContext } from 'next';
 import { ChannelPageProps } from '../types';
 import { getChannelProps } from '../utilities/getChannelProps';
 
-function Home({ channelId }: ChannelPageProps) {
+interface HomeProps extends ChannelPageProps {
+    username?: string;
+}
+
+function Home({ channelId, username }: HomeProps) {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         fetchPosts();
@@ -15,7 +19,7 @@ function Home({ channelId }: ChannelPageProps) {
     async function fetchPosts() {
         const postData: any = await API.graphql({
             query: listPosts,
-            authMode: 'AMAZON_COGNITO_USER_POOLS',
+            authMode: username ? 'AMAZON_COGNITO_USER_POOLS' : undefined,
             variables: {
                 channelId
             }
@@ -32,11 +36,16 @@ function Home({ channelId }: ChannelPageProps) {
     );
 }
 
-export function getServerSideProps(
+export async function getServerSideProps(
     context: NextPageContext
-): GetServerSidePropsResult<ChannelPageProps> {
+): Promise<GetServerSidePropsResult<HomeProps>> {
+    const props = getChannelProps(context) as HomeProps;
+    try {
+        const user = await Auth.currentAuthenticatedUser();
+        props.username = user.username;
+    } catch (ex) {}
     return {
-        props: getChannelProps(context)
+        props
     };
 }
 
